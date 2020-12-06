@@ -27,25 +27,42 @@ const init_buttons = (project) => {
         }})
     
 }
-
 const edit_item = (item, project) => {
     const todo_item = document.querySelectorAll('[data-id="' + item +'"]')[0];
     const dropdown_button = document.querySelectorAll('[data-id="' + item +'"]')[1];
-    dropdown_button.classList.remove('fa-caret-square-down');
-    dropdown_button.classList.add('fa-caret-square-up');
-    const todo_item_info = project.items[item]
-    const current_info = todo_item.innerHTML
-    const total_info = current_info + '<div class="extra-info"><input placeholder="' + todo_item_info.description + '"><br><input placeholder="' + todo_item_info.due_date + '"<br><input placeholder="' + todo_item_info.priority + '"<br><input placeholder="' + todo_item_info.project + '"<br><button class="save-item" data-id="' + item +'">Save</button></div>';
-    todo_item.classList.add('edit-todo-item')
-    todo_item.innerHTML = total_info;
-    const save_button = document.querySelectorAll('[data-id="' + item +'"]')[4];
-    save_button.onclick = () => {
-        todo_item.innerHTML = current_info
-        const dropdown_button = document.querySelectorAll('[data-id="' + item +'"]')[1];
+    if (todo_item.classList.contains('edit-todo-item')) {
+        todo_item.classList.remove('edit-todo-item');
         dropdown_button.classList.remove('fa-caret-square-up')
         dropdown_button.classList.add('fa-caret-square-down')
-        todo_item.classList.remove('edit-todo-item');
-        init_buttons(project)
+        const extra_info = document.querySelectorAll('[data-id="' + item +'"]')[4];
+        console.log(extra_info)
+        extra_info.remove()
+    } else{
+        dropdown_button.classList.remove('fa-caret-square-down');
+        dropdown_button.classList.add('fa-caret-square-up');
+        const todo_item_info = project.items[item]
+        const current_info = todo_item.innerHTML
+        const total_info = current_info + '<div class="extra-info" data-id="' + item + '"><input placeholder="' + todo_item_info.description + '"><br><input placeholder="' + todo_item_info.due_date + '"<br><input placeholder="' + todo_item_info.priority + '"<br><input placeholder="' + project.title + '"<br><button class="save-item" data-id="' + item +'">Save</button></div>';
+        todo_item.classList.add('edit-todo-item')
+        todo_item.innerHTML = total_info;
+        const save_button = document.querySelectorAll('[data-id="' + item +'"]')[5];
+        save_button.onclick = () => {
+            todo_item.innerHTML = current_info
+            const dropdown_button = document.querySelectorAll('[data-id="' + item +'"]')[1];
+            dropdown_button.classList.remove('fa-caret-square-up')
+            dropdown_button.classList.add('fa-caret-square-down')
+            todo_item.classList.remove('edit-todo-item');
+            init_buttons(project)
+        }
+        const close_dropdown_button = document.querySelectorAll('[data-id="' + item +'"]')[1];
+        close_dropdown_button.onclick = () => {
+            todo_item.innerHTML = current_info
+            const dropdown_button = document.querySelectorAll('[data-id="' + item +'"]')[1];
+            dropdown_button.classList.remove('fa-caret-square-up')
+            dropdown_button.classList.add('fa-caret-square-down')
+            todo_item.classList.remove('edit-todo-item');
+            init_buttons(project)
+        }
     }
 }
 const display_dropdown_item = (item, project) => {
