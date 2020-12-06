@@ -1,0 +1,180 @@
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    text-align: center;
+    font-weight: normal;
+}
+
+
+
+button {
+    transition-duration: 0.2s;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 20px;
+    height: 30px;
+    width: 120px;
+    outline: none;
+    margin: 0px 10px;
+}
+
+button:hover {
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.add-button{
+    background-color: rgb(250, 183, 183);
+    border: 1px solid rgb(252, 143, 143);
+}
+
+.add-button:hover {
+    background-color: rgb(255, 151, 151);
+}
+
+.view-project{
+    background-color: rgb(250, 231, 121);
+    border: 1px solid rgb(252, 227, 89);
+}
+
+.view-project:hover {
+    background-color: rgb(252, 227, 89);
+}
+
+.create-project{
+    background-color: rgb(199, 250, 183);
+    border: 1px solid rgb(162, 255, 133);
+}
+
+.create-project:hover {
+    background-color: rgb(162, 255, 133);
+}
+
+
+
+
+#content {
+    text-align: center;
+}
+
+.todo-item {
+    background-color: #eee;
+    border: 1px solid rgb(197, 197, 197);
+    border-radius: 5px;
+    width: 600px;
+    height: 50px;
+    margin: 10px auto;
+    display: inline-block;
+    text-align: initial;
+    line-height: 50px;
+    padding: 5px;
+}
+
+
+
+.open-todo-item {
+    width: 600px;
+    animation: 0.2s linear open-item forwards;
+    overflow: hidden;
+}
+@keyframes open-item {
+    0% {
+        height: 50px
+    }
+    100% {
+        height: 150px;
+    }
+}
+
+
+
+.edit-todo-item {
+    width: 600px;
+    animation: 0.2s linear edit-item forwards;
+    overflow: hidden;
+}
+@keyframes edit-item {
+    0% {
+        height: 50px
+    }
+    100% {
+        height: 300px;
+    }
+}
+
+
+
+
+h3 {
+    margin: 0;
+    display: inline-block;
+}
+
+i {
+    transition-duration: 0.2s;
+    font-size: 25px;
+    margin: 10px;
+}
+i:hover {
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.fa-trash-alt {
+    color: rgb(241, 112, 112);
+    float: right;
+}
+.fa-trash-alt:hover {
+    color: rgb(240, 84, 84);
+}
+
+.fa-caret-square-down {
+    font-size: 20px;
+}
+.fa-caret-square-up {
+    font-size: 20px;
+}
+.fa-edit {
+    color: rgb(103, 118, 255);
+    float: right;
+}
+
+.fa-edit:hover {
+    color: rgb(73, 91, 252);
+}
+
+.urgent { 
+    background-color: rgb(250, 202, 100);
+    border: 1px solid rgb(252, 195, 71);
+}
+
+.casual {
+    background-color: rgb(177, 253, 127);
+    border: 1px solid rgb(161, 255, 98);
+}
+
+.semi-urgent {
+    background-color: rgb(235, 243, 128);
+    border: 1px solid rgb(234, 243, 103);
+}
+
+input {
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+    width: 85%;
+}
+
+.save-item {
+    border: 1px solid #eee;
+    text-align: center;
+    margin: 5px auto;
+    display: block;
+}
