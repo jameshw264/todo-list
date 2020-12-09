@@ -25,6 +25,11 @@ const init_buttons = (project) => {
             display_dropdown_item(data_id, project)
             init_buttons(project)
         }})
+    const delete_base_button = document.querySelector('.base-button');
+    delete_base_button.onclick = () => {
+        const add_section = document.querySelector('.add-section');
+        add_section.remove()
+    }
     
 }
 const edit_item = (item, project) => {
@@ -35,9 +40,13 @@ const edit_item = (item, project) => {
         dropdown_button.classList.remove('fa-caret-square-up')
         dropdown_button.classList.add('fa-caret-square-down')
         const extra_info = document.querySelectorAll('[data-id="' + item +'"]')[4];
-        console.log(extra_info)
         extra_info.remove()
     } else{
+        const extra_info = document.querySelectorAll('[data-id="' + item +'"]')[4];
+        if (extra_info){
+            extra_info.remove()
+            todo_item.classList.remove('open-todo-item')
+        }
         dropdown_button.classList.remove('fa-caret-square-down');
         dropdown_button.classList.add('fa-caret-square-up');
         const todo_item_info = project.items[item]
@@ -72,7 +81,7 @@ const display_dropdown_item = (item, project) => {
     dropdown_button.classList.add('fa-caret-square-up');
     const todo_item_info = project.items[item]
     const current_info = todo_item.innerHTML
-    const total_info = current_info + '<div class="extra-info">' + todo_item_info.description + '<br>' + todo_item_info.due_date + '</div>';
+    const total_info = current_info + '<div class="extra-info" data-id="' + item + '">' + todo_item_info.description + '<br>' + todo_item_info.due_date + '</div>';
     todo_item.classList.add('open-todo-item')
     todo_item.innerHTML = total_info;
     const close_dropdown_button = document.querySelectorAll('[data-id="' + item +'"]')[1];
@@ -84,6 +93,7 @@ const display_dropdown_item = (item, project) => {
         todo_item.classList.remove('open-todo-item');
         init_buttons(project)
     }
+
 }
 
 

@@ -107,7 +107,16 @@ button:hover {
     }
 }
 
+.base-item input {
+    background-color: inherit;
+    font-size: 18px;
+}
 
+.base-item {
+    line-height: 35px;
+    animation: 0.2s linear edit-item forwards;
+    overflow: hidden;
+}
 
 
 h3 {
